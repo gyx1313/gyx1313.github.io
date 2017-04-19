@@ -497,6 +497,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/markdown/" itemprop="url" rel="index">
+                    <span itemprop="name">markdown</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -534,13 +556,50 @@
       
         
           
-            <p>#大</p>
-<p>##大</p>
-<p>###大</p>
-<p>markdown这个玩意怎么用啊，好奇怪啊</p>
-<p>如果我空行</p>
-<p>哈</p>
+            <p>通过在行首插入 1 到 6 个 # (如#大)，来定义对应的 1 到 6 阶 标题：</p>
+<h1 id="大"><a href="#大" class="headerlink" title="大"></a>大</h1><h2 id="大-1"><a href="#大-1" class="headerlink" title="大"></a>大</h2><h3 id="大-2"><a href="#大-2" class="headerlink" title="大"></a>大</h3><p>在 Markdown 中段落由一行或者多行文本组成，相邻的两行文字会被视为同一段落，如果存在空行则被视为不同段落( Markdown 对空行的定义是看起来是空行就是空行，即使空行中存在 空格 TAB 回车 等不可见字符，同样会被视为空行)。</p>
+<p>第一行</p>
+<p>两行之间存在空行，视为不同段落。 </p>
+<p>链接的语法为[链接名称]然后紧跟（链接）</p>
+<p><a href="http://www.douban.com" target="_blank" rel="external">豆瓣</a></p>
+<p>Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用方括号包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：</p>
+<p><a href="http://www.douban.com" target="_blank" rel="external">http://www.douban.com</a></p>
+<p>图片的语法为![图片名称]然后紧跟（图片链接）</p>
+<p><img src="https://img3.doubanio.com/f/sns/19886d443852bee48de2ed91f4a3bdfdaf8c809c/pics/nav/logo_db.png" alt="豆瓣Logo"></p>
+<p><em>倾斜</em><br><strong>粗体</strong></p>
+<p><del>删除线</del></p>
+<blockquote>
+<p>引用</p>
+</blockquote>
+<ul>
+<li>项目</li>
+<li>项目</li>
+<li>项目<ul>
+<li>子项目</li>
+<li>子项目</li>
+</ul>
+</li>
+<li>项目 </li>
+<li></li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title="*"></a><em>*</em></h2><hr>
+<ol>
+<li>项目</li>
+<li>项目</li>
+<li>项目<ol>
+<li>子项目</li>
+<li>子项目</li>
+</ol>
+</li>
+<li>项目 </li>
+</ol>
+<h2 id="-1"><a href="#-1" class="headerlink" title="*"></a><em>*</em></h2><hr>
+<p>*Hi* </p>
+<p>一句话<code>行内代码</code>一句话。</p>
+<p>多行代码使用 3 个反引号来标记(反引号一般位于键盘左上角，要用英文) ，在第一个 ｀｀｀ 后面可以跟语言类型，没有语言类型可以省略不写:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  [type.ADDEVENT](states, obj)&#123;</span><br><span class="line">    states.count++;</span><br><span class="line">    obj.items.id = states.count;</span><br><span class="line">    states.event.unshift(obj.items);</span><br><span class="line">    func.local.set(states);</span><br><span class="line">  &#125;,</span><br><span class="line">  [type.EVENTDONE](states, obj)&#123;</span><br><span class="line">    for (let i = 0; i &lt; states.event.length; i++) &#123;</span><br><span class="line">      if (states.event[i].id === obj.id) &#123;</span><br><span class="line">        states.event[i].type = 2;</span><br><span class="line">        states.event[i].time = func.getDate();</span><br><span class="line">        var item = states.event[i];</span><br><span class="line">        states.event.splice(i, 1);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    states.event.unshift(item);</span><br><span class="line">    func.local.set(states);</span><br><span class="line">  &#125;,</span><br><span class="line">  [type.EVENTTODO](states, obj)&#123;</span><br><span class="line">    for (let i = 0; i &lt; states.event.length; i++) &#123;</span><br><span class="line">      if (states.event[i].id === obj.id) &#123;</span><br><span class="line">        states.event[i].type = 1;</span><br><span class="line">        var item = states.event[i];</span><br><span class="line">        states.event.splice(i, 1);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    states.event.unshift(item);</span><br><span class="line">    func.local.set(states);</span><br><span class="line">  &#125;,</span><br><span class="line">  [type.EVENTCANCEL](states, obj)&#123;</span><br><span class="line">    for (let i = 0; i &lt; states.event.length; i++) &#123;</span><br><span class="line">      if (states.event[i].id === obj.id) &#123;</span><br><span class="line">        states.event[i].type = 3;</span><br><span class="line">        var item = states.event[i];</span><br><span class="line">        states.event.splice(i, 1);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    states.event.unshift(item);</span><br><span class="line">    func.local.set(states);</span><br><span class="line">  &#125;,</span><br><span class="line">  [type.CLEAREVENT](states)&#123;</span><br><span class="line">    states.event = [];</span><br><span class="line">    func.local.clear();</span><br><span class="line">  &#125;,</span><br><span class="line">  [type.DELEVENT](states, info)&#123;</span><br><span class="line">    if (states.event[info.index].id === info.id) &#123;</span><br><span class="line">      states.event.splice(info.index, 1);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      states.event.filter(function (d, i) &#123;</span><br><span class="line">        if (d.id == info.id) &#123;</span><br><span class="line">          states.event.splice(i, 1);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    func.local.set(states);</span><br><span class="line">  &#125;,</span><br><span class="line">  [type.EDITEVENT](states, info)&#123;</span><br><span class="line">    if (states.event[info.index].id === info.id) &#123;</span><br><span class="line">      states.event[info.index].content = info.content;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      states.event.filter(function (d) &#123;</span><br><span class="line">        if (d.id == info.id) &#123;</span><br><span class="line">          d.content = info.content;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    func.local.set(states);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -886,7 +945,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -895,7 +954,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
