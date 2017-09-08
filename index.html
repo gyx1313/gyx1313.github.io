@@ -312,6 +312,162 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/javascript/javascript中的this，箭头函数中的this.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gyx13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gyx13's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/posts/javascript/javascript中的this，箭头函数中的this.html" itemprop="url">
+                  javascript中的this，箭头函数中的this
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T16:09:30+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在平常写javascript代码的时候，很多时候我们都需要用到this，不过在根据不同的场景下，this的指向却会有不同的结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var obj = &#123;</span><br><span class="line">  a: 2</span><br><span class="line">&#125;;</span><br><span class="line">function fun() &#123;</span><br><span class="line">    var a = 3;</span><br><span class="line">    let f = () =&gt; console.log(this.a);</span><br><span class="line">      f();</span><br><span class="line">&#125;;</span><br><span class="line">fun();//1</span><br><span class="line">fun.call(obj);//2</span><br></pre></td></tr></table></figure>
+<p>如上，fun直接调用，fun的上下文中的this值为window，注意，这个地方有点绕。fun的上下文就是此箭头函数所在的上下文，因此此时f的this为fun的this也就是window。当fun.call(obj)再次调用的时候，新的上下文创建，fun此时的this为obj，也就是箭头函数的this值。</p>
+<p><strong>这也就是常说的箭头函数没有自己的this，箭头函数的this实际为其外层函数作用域中的this</strong>，可以看到作为箭头函数的f的，他的外层函数是fun，而此时fun作为全局函数调用，那么fun的this就是window，所以f里的this就指向了window了。</p>
+<p>箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值，也就是说箭头函数的this在词法层面就完成了绑定。apply，call方法只是传入参数，却改不了this。</p>
+<p>下面再来看下另外一个比较全面的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;window&apos;</span><br><span class="line"></span><br><span class="line">var person1 = &#123;</span><br><span class="line">  name: &apos;person1&apos;,</span><br><span class="line">  show1: function () &#123;</span><br><span class="line">    console.log(this.name)</span><br><span class="line">  &#125;,</span><br><span class="line">  show2: () =&gt; console.log(this.name),</span><br><span class="line">  show3: function () &#123;</span><br><span class="line">    return function () &#123;</span><br><span class="line">      console.log(this.name)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  show4: function () &#123;</span><br><span class="line">    return () =&gt; console.log(this.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person2 = &#123; name: &apos;person2&apos; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">person1.show1() // person1</span><br><span class="line">person1.show1.call(person2) // person2</span><br><span class="line"></span><br><span class="line">person1.show2() // window</span><br><span class="line">person1.show2.call(person2) // window</span><br><span class="line"></span><br><span class="line">person1.show3()() // window</span><br><span class="line">person1.show3().call(person2) // person2</span><br><span class="line">person1.show3.call(person2)() // window</span><br><span class="line"></span><br><span class="line">person1.show4()() // person1</span><br><span class="line">person1.show4().call(person2) // person1</span><br><span class="line">person1.show4.call(person2)() // person2</span><br></pre></td></tr></table></figure>
+<p>在一般函数的情况下，this总是指向调用该函数的对象。person1.show1()很好理解，因为是person1对象调用的，所以this也就指向了person1对象，所以结果是person1。而person1.show1.call(person2) 则通过call方法将this指向了person2。</p>
+<p>在箭头函数的情况下，person1.show2()的结果却是window，这是因为<strong>箭头函数的this指向外层函数作用域中的this</strong>，外层函数作用域中的this，实际上这时候并没有外层函数了，外层就是全局环境了，没有外层函数所以指向了window。</p>
+<p>person1.show3是一个高阶函数，它返回了一个函数，分步走的话，应该是这样：</p>
+<p>var func = person3.show()</p>
+<p>func()</p>
+<p>从而导致最终调用函数的执行环境是window，但并不是window对象调用了它。所以说，this总是指向调用该函数的对象，这句话还得补充一句：在全局函数中，this等于window。</p>
+<p>person1.show3().call(person2) 与 person1.show3.call(person2)() 也好理解了。前者是通过person2调用了最终的打印方法。后者是先通过person2调用了person1的高阶函数，然后再在全局环境中执行了该打印方法。</p>
+<p>person1.show4()()，person1.show4().call(person2)都是打印person1。这好像又印证了那句：箭头函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。因为即使我用过person2去调用这个箭头函数，它指向的还是person1。</p>
+<p>然而person1.show4.call(person2)()的结果又是person2。this值又发生改变，看来上述那句描述又走不通了。一步步来分析，先通过person2执行了show4方法，此时show4第一层函数的this指向的是person2。所以箭头函数输出了person2的name。也就是说，箭头函数的this指向的是<strong>谁调用箭头函数的外层function，箭头函数的this就是指向该对象，如果箭头函数没有外层函数，则指向window。</strong>这样去理解show2方法，也解释的通。</p>
+<p>参考：<a href="https://juejin.im/post/59748cbb6fb9a06bb21ae36d" target="_blank" rel="external">https://juejin.im/post/59748cbb6fb9a06bb21ae36d</a><br><a href="https://juejin.im/post/59aa71d56fb9a0248d24fae3#comment" target="_blank" rel="external">https://juejin.im/post/59aa71d56fb9a0248d24fae3#comment</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/css/CSS动画中的transform，transition以及animation的区别小结.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -807,7 +963,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -816,7 +972,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -825,7 +981,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
