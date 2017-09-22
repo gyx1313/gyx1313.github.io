@@ -1,0 +1,996 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,Javascript高级手册读书笔记,数据类型,基础概念," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="数据类型javascript中有五种简单数据类型（基本数据类型）：Undefined, Null, String, Number, Boolean。一种复杂数据类型（引用数据类型）：Object。
+javascript中的变量是松散类型（即弱类型）的，可以用来保存任何类型的数据。
+可以用typeof 操作符去检测给定变量的数据类型，可能的返回值：
+
+‘undefined’ — 这个值未定义；
+
+‘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript 高级手册读书笔记01:数据类型">
+<meta property="og:url" content="http://yoursite.com/posts/javascript/Javascript-高级手册读书笔记01-数据类型.html">
+<meta property="og:site_name" content="gyx13's blog">
+<meta property="og:description" content="数据类型javascript中有五种简单数据类型（基本数据类型）：Undefined, Null, String, Number, Boolean。一种复杂数据类型（引用数据类型）：Object。
+javascript中的变量是松散类型（即弱类型）的，可以用来保存任何类型的数据。
+可以用typeof 操作符去检测给定变量的数据类型，可能的返回值：
+
+‘undefined’ — 这个值未定义；
+
+‘">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201601/201601130904581.png">
+<meta property="og:updated_time" content="2017-09-22T13:22:06.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript 高级手册读书笔记01:数据类型">
+<meta name="twitter:description" content="数据类型javascript中有五种简单数据类型（基本数据类型）：Undefined, Null, String, Number, Boolean。一种复杂数据类型（引用数据类型）：Object。
+javascript中的变量是松散类型（即弱类型）的，可以用来保存任何类型的数据。
+可以用typeof 操作符去检测给定变量的数据类型，可能的返回值：
+
+‘undefined’ — 这个值未定义；
+
+‘">
+<meta name="twitter:image" content="http://files.jb51.net/file_images/article/201601/201601130904581.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/posts/javascript/Javascript-高级手册读书笔记01-数据类型.html"/>
+
+
+
+
+
+  <title> Javascript 高级手册读书笔记01:数据类型 | gyx13's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3c91b87c712b0328b52eebe6d21c82a9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gyx13's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">wvwvw</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/javascript/Javascript-高级手册读书笔记01-数据类型.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gyx13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gyx13's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Javascript 高级手册读书笔记01:数据类型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-14T14:40:02+08:00">
+                2017-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/posts/javascript/Javascript-高级手册读书笔记01-数据类型.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>javascript中有五种简单数据类型（基本数据类型）：Undefined, Null, String, Number, Boolean。一种复杂数据类型（引用数据类型）：Object。</p>
+<p>javascript中的变量是松散类型（即弱类型）的，可以用来保存任何类型的数据。</p>
+<p>可以用typeof 操作符去检测给定变量的数据类型，可能的返回值：</p>
+<ol>
+<li><p>‘undefined’ — 这个值未定义；</p>
+</li>
+<li><p>‘boolean’ — 这个值是布尔值；</p>
+</li>
+<li><p>‘string’ — 这个值是字符串；</p>
+</li>
+<li><p>‘number’ — 这个值是数值；</p>
+</li>
+<li><p>‘object’ — 这个值是对象或null；</p>
+</li>
+<li><p>‘function’ — 这个值是函数。</p>
+</li>
+</ol>
+<p>typeof 有不少的坑，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof null // &quot;object&quot;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>因为特殊值null会被认为是一个空的对象引用，因此会得到这样的结果。所以<strong>严格来说typeof只能笼统地检测出数据类型，大多数情况下不建议使用，后面继续说更好的方法</strong></p>
+<h3 id="Undefined-类型"><a href="#Undefined-类型" class="headerlink" title="Undefined 类型"></a>Undefined 类型</h3><p>Undefined类型只有一个值，即特殊的undefined。在使用var声明变量但未对其加以初始化时，这个值就是undefined。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var message</span><br><span class="line">console.log(typeof message) // &apos;undefined&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="Null-类型"><a href="#Null-类型" class="headerlink" title="Null 类型"></a>Null 类型</h3><p>Null类型和Undefined一样，也是只有一个值，即特殊的null。<strong>null值表示的是一个空的对象指针</strong>，这也就是typeof null会得到”object”的原因。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var car = null</span><br><span class="line">console.log(typeof car) // &apos;null&apos;</span><br></pre></td></tr></table></figure>
+<p>所以可以理解为Null是针对对象版的Undefined，要是定义了一个新的变量是准备拿来保存对象的，那么最好将其初始化为null而不是其他值，这样比较直观。<br>另外要说一下，如果做比较:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(null == undefined) // true</span><br><span class="line">console.log(null === undefined) // false</span><br></pre></td></tr></table></figure>
+<p>这也算是一个小坑，怪不得eslint要求无论什么时候都用”===”，因为”==”会帮我们<a href="https://www.zhihu.com/question/31442029" target="_blank" rel="external"><strong>类型转换</strong></a>，有时候需要准确结果的话，不见得是好事。</p>
+<h3 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h3><p>Boolean类型是JavaScript中的一种原始类型，它只有两种值：true和false。</p>
+<p>使用Boolean(value)方法可以强制转换任意值为boolean类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">alert(Boolean(&apos;&apos;)); //outpt false  </span><br><span class="line">alert(Boolean(&apos;hello&apos;)); //output true  </span><br><span class="line">alert(Boolean(100)); //output true  </span><br><span class="line">alert(Boolean(0)); //output false</span><br><span class="line">alert(Boolean(NaN)); //output false</span><br><span class="line">alert(Boolean(null)); //output false  </span><br><span class="line">alert(Boolean(undefined)); //output false  </span><br><span class="line">alert(Boolean(new Object())); //output true</span><br></pre></td></tr></table></figure>
+<p>可以看出，当被转换的值为空字符串、数字0和NaN、null或者undefined时，转换为false，其它情况转换为true。所以当我们写if判断的时候需要注意这些特殊的情况，尤其是使用目前比较流行的“对象探测法”书写JS时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var student = new Object();  </span><br><span class="line">if (student.name) &#123;  </span><br><span class="line">  alert(student.name);  </span><br><span class="line">&#125; else &#123;  </span><br><span class="line">  student.name = &apos;Tom&apos;;  </span><br><span class="line">  alert(student.name);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>if (student.name)这句用来探测student对象中存不存在name属性，如果存在则弹出；否则把name赋值为’Tom’，再弹出。这边需要注意的是如果name值已经存在，并且值为空字符串或者0时，结果可能与你预期的不同。</p>
+<p>参考：<a href="http://blog.csdn.net/gudanyehai/article/details/6089255" target="_blank" rel="external">http://blog.csdn.net/gudanyehai/article/details/6089255</a></p>
+<h3 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h3><p>关于Number类型先占个坑，粗略要说下的是要记住八进制这个坑，还有浮点数大坑。。</p>
+<h4 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h4><p>NaN(Not a Number)是Number类型的一个特殊值，这个数值表示一个本来要返回数值的操作数未返回数值的情况。比如，任何数除以0会返回NaN，另外，任何涉及NaN的操作，例如（NaN/10）都会返回NaN，<br>NaN与任何值都不相等，包括NaN自身，这意味着（NaN == NaN）将返回 false。</p>
+<p>针对这个如此特殊的值，规范中有了isNaN() 这个函数，用于检查其参数是否是非数字值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alert(isNaN(NaN))  // true</span><br><span class="line">alert(isNaN(10)) // false （10是一个数值）</span><br><span class="line">alert(isNaN(&apos;10&apos;)) // false （可以被转换成数值10）</span><br><span class="line">alert(isNaN(&apos;blue&apos;)) // true （不能被转换成数值）</span><br><span class="line">alert(isNaN(true)) // false （可以被转换成数值1）</span><br></pre></td></tr></table></figure>
+<h4 id="数值转换"><a href="#数值转换" class="headerlink" title="数值转换"></a>数值转换</h4><p>再次占个坑，有三个函数可以把非数值转换为数值，分别是：Number()、parseInt()和parseFloat()。第一个函数，Number()可以用于任何数据类型，而另外两个函数则专门用于把字符串转换成数值。</p>
+<h3 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h3><h3 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h3><p>前面提及的都是基本数据类型，Object数据类型是复杂数据类型。</p>
+<h2 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h2><h3 id="typeof-和-instanceof"><a href="#typeof-和-instanceof" class="headerlink" title="typeof 和 instanceof"></a>typeof 和 instanceof</h3><p>在javascript中，typeof 和 instanceof 是用来判断数据类型比较通用的两个方法，这篇文章的目的是通过对这两个方法介绍来分析其存在的不足并提出优化方案。</p>
+<h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>typeof 返回一个表达式的数据类型的字符串，返回结果为javascript中的基本数据类型，包括：number、boolean、string、object、undefined、function等6种数据类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typeof 100; //number</span><br><span class="line">typeof (1==1); //boolean</span><br><span class="line">typeof &apos;onepixel&apos;; //string</span><br><span class="line">typeof &#123;&#125; ; //object</span><br><span class="line">typeof onepixel; // undefined</span><br><span class="line">typeof parseInt; // function</span><br><span class="line">typeof [];//object</span><br><span class="line">typeof new Date(); //object</span><br></pre></td></tr></table></figure>
+<p>可以看出，<strong>typeof 可以准确的判断除object以外的基础数据类型，但不能区分object类型的具体类型，比如 Array 、Date 以及自定义类。</strong></p>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>instanceof 本意是用来判断 A 是否为 B 的实例对象，表达式为：A instanceof B，如果A是B的实例，则返回true,否则返回false。 在这里需要特别注意的是：instanceof检测的是原型，那它是怎么检测的呢，我们用一段伪代码来模拟其内部执行过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">instanceof (A,B) = &#123;</span><br><span class="line">var L = A.__proto__;</span><br><span class="line">var R = B.prototype;</span><br><span class="line">if(L === R) &#123;</span><br><span class="line">//A的内部属性__proto__指向B的原型对象</span><br><span class="line">return true;</span><br><span class="line">&#125;</span><br><span class="line">return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上述过程可以看出，当A的<strong>proto</strong> 指向B的prototype时，就认为A就是B的实例对象，我们再来看几个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[] instanceof Array; //true</span><br><span class="line">&#123;&#125; instanceof Object;//true</span><br><span class="line">new Date() instanceof Date;//true</span><br><span class="line">function Person()&#123;&#125;;</span><br><span class="line">new Person() instanceof Person;</span><br><span class="line">[] instanceof Object; //true</span><br><span class="line">new Date() instanceof Object;//tru</span><br><span class="line">new Person instanceof Object;//true</span><br></pre></td></tr></table></figure>
+<p>从上面的例子中，我们发现虽然instanceof能够正确判断[] 是Array的实例对象，但不能辨别 [] 不是Object的实例对象，为什么呢，这还需要从javascript的原型链说起，我们首先来分析一下[]、Array、Object 三者之间的关系，从instanceof判断能够得出：[].<strong>proto</strong> -&gt;Array.prototype， 而Array.prototype.<strong>proto</strong>指向了Object.prototype，Object.prototype.<strong>proto</strong> 指向了null,标志着原型链的结束。（ps:关于JS原型链请阅读：浅谈javascript原型和原型链） 因此，[]、Array、Object就形成了一条原型链：<br><img src="http://files.jb51.net/file_images/article/201601/201601130904581.png" alt="prototype-img"></p>
+<p>从原型链可以看出，[]的<strong>proto</strong>最终指向了Object.prototype，类似的new Date()、new Person() 也会形成这样一条原型链，因此，我们用 instanceof 也不能完全精确的判断object类的具体数据类型。</p>
+<p>参考：<a href="http://www.jb51.net/article/77948.htm" target="_blank" rel="external">http://www.jb51.net/article/77948.htm</a></p>
+<h3 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString()"></a>Object.prototype.toString()</h3><p>在 JavaScript 里使用 typeof 来判断数据类型，只能区分基本类型，即 “number”，”string”，”undefined”，”boolean”，”object” 五种。</p>
+<p>对于数组、函数、对象来说，其关系错综复杂，使用 typeof 都会统一返回 “object” 字符串。</p>
+<p>要想区别对象、数组、函数单纯使用 typeof 是不行的，JavaScript中,通过Object.prototype.toString方法，判断某个对象值属于哪种内置类型。</p>
+<p>1.判断基本类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString.call(null);//”[object Null]”</span><br><span class="line">Object.prototype.toString.call(undefined);//”[object Undefined]”</span><br><span class="line">Object.prototype.toString.call(“abc”);//”[object String]”</span><br><span class="line">Object.prototype.toString.call(123);//”[object Number]”</span><br><span class="line">Object.prototype.toString.call(true);//”[object Boolean]”</span><br></pre></td></tr></table></figure>
+<p>2.判断原生引用类型：<br>函数类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Function fn()&#123;console.log(“test”);&#125;</span><br><span class="line">Object.prototype.toString.call(fn);//”[object Function]”</span><br></pre></td></tr></table></figure>
+<p>日期类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var date = new Date();</span><br><span class="line">Object.prototype.toString.call(date);//”[object Date]”</span><br></pre></td></tr></table></figure>
+<p>数组类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,2,3];</span><br><span class="line">Object.prototype.toString.call(arr);//”[object Array]”</span><br></pre></td></tr></table></figure>
+<p>正则表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var reg = /[hbc]at/gi;</span><br><span class="line">Object.prototype.toString.call(arr);//”[object Array]”</span><br></pre></td></tr></table></figure>
+<p>自定义类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br><span class="line">var person = new Person(&quot;Rose&quot;, 18);</span><br><span class="line">Object.prototype.toString.call(person); //”[object Object]”</span><br></pre></td></tr></table></figure>
+<p><strong>但是要注意的一点是，如果是自定义类型，则是还是需要用instanceof去判断</strong>很明显这种方法不能准确判断person是Person类的实例，而只能用instanceof 操作符来进行判断，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(person instanceof Person);//输出结果为true</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="http://blog.csdn.net/icanlove/article/details/43702879" target="_blank" rel="external">http://blog.csdn.net/icanlove/article/details/43702879</a></p>
+<p><a href="http://www.cnblogs.com/youhong/p/6209054.html" target="_blank" rel="external">http://www.cnblogs.com/youhong/p/6209054.html</a></p>
+<p><a href="http://www.cnblogs.com/ziyunfei/archive/2012/11/05/2754156.html" target="_blank" rel="external">http://www.cnblogs.com/ziyunfei/archive/2012/11/05/2754156.html</a></p>
+<p><a href="http://www.cnblogs.com/wyaocn/p/5796142.html" target="_blank" rel="external">http://www.cnblogs.com/wyaocn/p/5796142.html</a></p>
+<p><a href="https://juejin.im/post/59b5540c5188257e8769e95d#comment" target="_blank" rel="external">https://juejin.im/post/59b5540c5188257e8769e95d#comment</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/Javascript高级手册读书笔记/" rel="tag"># Javascript高级手册读书笔记</a>
+          
+            <a href="/tags/数据类型/" rel="tag"># 数据类型</a>
+          
+            <a href="/tags/基础概念/" rel="tag"># 基础概念</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/javascript/javascript中的this，箭头函数中的this.html" rel="next" title="javascript中的this，箭头函数中的this">
+                <i class="fa fa-chevron-left"></i> javascript中的this，箭头函数中的this
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/javascript/作用域与闭包详解.html" rel="prev" title="作用域与闭包详解">
+                作用域与闭包详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gyx13" />
+          <p class="site-author-name" itemprop="name">gyx13</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Undefined-类型"><span class="nav-number">1.1.</span> <span class="nav-text">Undefined 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Null-类型"><span class="nav-number">1.2.</span> <span class="nav-text">Null 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean-类型"><span class="nav-number">1.3.</span> <span class="nav-text">Boolean 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-类型"><span class="nav-number">1.4.</span> <span class="nav-text">Number 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NaN"><span class="nav-number">1.4.1.</span> <span class="nav-text">NaN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数值转换"><span class="nav-number">1.4.2.</span> <span class="nav-text">数值转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-类型"><span class="nav-number">1.5.</span> <span class="nav-text">String 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-类型"><span class="nav-number">1.6.</span> <span class="nav-text">Object 类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型判断"><span class="nav-number">2.</span> <span class="nav-text">类型判断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-和-instanceof"><span class="nav-number">2.1.</span> <span class="nav-text">typeof 和 instanceof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof"><span class="nav-number">2.2.</span> <span class="nav-text">typeof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof"><span class="nav-number">2.3.</span> <span class="nav-text">instanceof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-toString"><span class="nav-number">2.4.</span> <span class="nav-text">Object.prototype.toString()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gyx13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "a40f22b58f5247488b626b07419b669f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -95,7 +95,7 @@ transform先来看跟变形金刚transformer很像的transform， 首先要注�
 <meta property="og:site_name" content="gyx13's blog">
 <meta property="og:description" content="在css学习中，尤其是动画部分，相信很多人都会接触过transform，transition以及animation属性，如果望文生义从字面上这些词翻译成中文好像都差不多，其实他们三者分别还是很大的。
 transform先来看跟变形金刚transformer很像的transform， 首先要注意的是transform属性是静态属性！静态属性！静态属性！只要写进style里就会直接显示生效，不会出现动">
-<meta property="og:updated_time" content="2017-06-14T15:33:52.289Z">
+<meta property="og:updated_time" content="2017-09-22T13:22:25.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS动画中的transform，transition以及animation的区别小结">
 <meta name="twitter:description" content="在css学习中，尤其是动画部分，相信很多人都会接触过transform，transition以及animation属性，如果望文生义从字面上这些词翻译成中文好像都差不多，其实他们三者分别还是很大的。
@@ -421,6 +421,7 @@ transform先来看跟变形金刚transformer很像的transform， 首先要注�
         <p>在css学习中，尤其是动画部分，相信很多人都会接触过transform，transition以及animation属性，如果望文生义从字面上这些词翻译成中文好像都差不多，其实他们三者分别还是很大的。</p>
 <h2 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h2><p>先来看跟变形金刚transformer很像的transform，<strong> 首先要注意的是transform属性是静态属性！静态属性！静态属性！只要写进style里就会直接显示生效，不会出现动画过程。</strong>通过使用transform属性，能够对元素进行移动（translate）、缩放（scale）、旋转（rotate）、翻转（skew）。对于这些就不展开说，有兴趣的可以自行实践下就明白了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">div</span><br><span class="line">&#123;</span><br><span class="line">transform: translate(50px,100px) rotate(30deg);</span><br><span class="line">-ms-transform: translate(50px,100px) rotate(30deg);		/* IE 9 */</span><br><span class="line">-webkit-transform: translate(50px,100px) rotate(30deg);	/* Safari and Chrome */</span><br><span class="line">-o-transform: translate(50px,100px) rotate(30deg);		/* Opera */</span><br><span class="line">-moz-transform: translate(50px,100px) rotate(30deg);		/* Firefox */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h2><p>不同于静态的transform，被称为过渡的transition是一个简单的动画属性，可以看作是是animation的简化版本，通常拿来配合事件触发使用，简单易用。<br>他的语法是transition: property duration timing-function delay;<br><strong>单纯的代码不会触发过渡操作，需要通过用户的行为（如点击，悬浮等）触发，常见的触发的方式有：</strong></p>
 <ul>
 <li>:hover </li>
@@ -655,7 +656,7 @@ transform先来看跟变形金刚transformer很像的transform， 首先要注�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -673,7 +674,7 @@ transform先来看跟变形金刚transformer很像的transform， 首先要注�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

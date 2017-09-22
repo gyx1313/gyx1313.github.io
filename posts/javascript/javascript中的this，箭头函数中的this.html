@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="gyx13's blog">
 <meta property="og:description" content="在平常写javascript代码的时候，很多时候我们都需要用到this，不过在根据不同的场景下，this的指向却会有不同的结果。
 1234567891011var a = 1;var obj = &amp;#123;  a: 2&amp;#125;;function fun() &amp;#123;    var a = 3;    let f = () =&amp;gt; console.log(this.a);      f">
-<meta property="og:updated_time" content="2017-09-08T08:17:38.519Z">
+<meta property="og:updated_time" content="2017-09-22T13:22:42.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中的this，箭头函数中的this">
 <meta name="twitter:description" content="在平常写javascript代码的时候，很多时候我们都需要用到this，不过在根据不同的场景下，this的指向却会有不同的结果。
@@ -420,6 +420,7 @@
       
         <p>在平常写javascript代码的时候，很多时候我们都需要用到this，不过在根据不同的场景下，this的指向却会有不同的结果。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var obj = &#123;</span><br><span class="line">  a: 2</span><br><span class="line">&#125;;</span><br><span class="line">function fun() &#123;</span><br><span class="line">    var a = 3;</span><br><span class="line">    let f = () =&gt; console.log(this.a);</span><br><span class="line">      f();</span><br><span class="line">&#125;;</span><br><span class="line">fun();//1</span><br><span class="line">fun.call(obj);//2</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>如上，fun直接调用，fun的上下文中的this值为window，注意，这个地方有点绕。fun的上下文就是此箭头函数所在的上下文，因此此时f的this为fun的this也就是window。当fun.call(obj)再次调用的时候，新的上下文创建，fun此时的this为obj，也就是箭头函数的this值。</p>
 <p><strong>这也就是常说的箭头函数没有自己的this，箭头函数的this实际为其外层函数作用域中的this</strong>，可以看到作为箭头函数的f的，他的外层函数是fun，而此时fun作为全局函数调用，那么fun的this就是window，所以f里的this就指向了window了。</p>
 <p>箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值，也就是说箭头函数的this在词法层面就完成了绑定。apply，call方法只是传入参数，却改不了this。</p>
@@ -480,6 +481,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/javascript/Javascript-高级手册读书笔记01-数据类型.html" rel="prev" title="Javascript 高级手册读书笔记01:数据类型">
+                Javascript 高级手册读书笔记01:数据类型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -544,7 +549,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -562,7 +567,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
